@@ -4,7 +4,7 @@
 /**
  * Expand function of file upload element. (input type="file")
  * 
- * @version 1.1
+ * @version 1.1.1
  * @date 2017-1-30 | 2017-1-31
  */
 var ImgUploadK =function(){
@@ -14,6 +14,8 @@ var ImgUploadK =function(){
 	var lblParam = {}; // parameter for "extendLbl" function.
 	
 	var files; // File object from the file event.
+	
+	var def_img_fp ; // Default image path.
 	
 	var myself=this; // Instance of myself.
 	
@@ -41,6 +43,9 @@ var ImgUploadK =function(){
 		this.dndParam = _setParamIfEmptyForDnD(param);
 		
 		var fuElm = $(param.rap_slt);
+		
+		// Keep image file path.
+		this.def_img_fp = $(param.img_preview_slt).attr('src');
 
 		// Add drop event to rapper element.
 		fuElm[0].addEventListener('drop',function(evt){
@@ -93,6 +98,9 @@ var ImgUploadK =function(){
 		this.lblParam = _setParamIfEmptyForLbl(param);
 		
 		var lblElm = $(param.label_slt);
+		
+		// Keep image file path.
+		this.def_img_fp = $(param.img_preview_slt).attr('src');
 
 		// Add drop event to rapper element.
 		lblElm[0].addEventListener('drop',function(evt){
@@ -156,6 +164,42 @@ var ImgUploadK =function(){
 	 */
 	this.getFiles = function(){
 		return myself.files;
+	}
+	
+	
+	/**
+	 * Reset file upload elemnt and image preview element.(For label type)
+	 */
+	this.resetLbl = function(){
+		
+		var param = myself.lblParam;
+		
+		try {
+			$(param.file_upload_slt).val("");// Attention: change event occurs in IE
+		} catch (e) {
+			console.log('It can not be reset in IE ');
+		}	
+		$(param.img_preview_slt).attr('src',myself.def_img_fp);
+		
+		
+	}
+	
+	
+	/**
+	 * Reset file upload elemnt and image preview element.(For label type)
+	 */
+	this.resetDnD = function(){
+		
+		var param = myself.dndParam;
+		
+		try {
+			$(param.file_upload_slt).val("");// Attention: change event occurs in IE
+		} catch (e) {
+			console.log('It can not be reset in IE ');
+		}	
+		$(param.img_preview_slt).attr('src',myself.def_img_fp);
+		
+		
 	}
 	
 	
