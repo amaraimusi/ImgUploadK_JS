@@ -5,7 +5,7 @@
 	<meta name="google" content="notranslate" />
    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
    	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ImgUploadK_JS | index</title>
+	<title>ImgUploadK_JS | Extend file upload with label.</title>
 	
 	<link href="http://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -14,13 +14,44 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<script src="ImgUploadK.js"></script>
 
+	<style>
+		#test1{
+			padding:1px;
+			width:400px;
+			height:250px;
+			background-color:#d6e2f8;
+		}
+		
+		#test1_init{
+			width:300px;
+			margin-top:70px;
+			margin-left:50px;
+		}
+	</style>
+	
+	<script>
+	$(function(){
+		var imgUploadK = new ImgUploadK();
+	
+		imgUploadK.extendLbl({
+			'label_slt':'#label1',
+			'file_upload_slt':'#file1',
+			'img_preview_slt':'#img1',
+		});
+		
 
+	});
+	
+	</script>
 
 </head>
 <body>
-<div id="header" ><h1>ImgUploadK_JS | index</h1></div>
+<div id="header" ><h1>ImgUploadK_JS | Extend file upload with label.</h1></div>
 <div class="container">
+
 
 
 
@@ -34,12 +65,11 @@
 <a href="https://github.com/amaraimusi/ImgUploadK_JS">GitHub</a><br>
 <br>
 
-<h2>Index</h2>
-<ol>
-	<li><a href="example1.html">Extend drag &amp; drop</a></li>
-	<li><a href="example3.html">Extend file upload with label.</a></li>
-</ol>
-
+<h2>example3</h2>
+<input type="file" id="file1" />
+<label id="label1" for="file1">
+	<img id="img1" src="example/no_image.png" style="width:64px;height:64px;" />
+</label>
 
 
 
@@ -56,6 +86,6 @@
 
 <div class="yohaku"></div>
 </div><!-- content -->
-<div id="footer">(C) <a href="http://amaraimusi.sakura.ne.jp/" target="blank">kenji uehara</a> 2017-1-30</div>
+<div id="footer">(C) <a href="http://amaraimusi.sakura.ne.jp/" target="blank">kenji uehara</a> 2017-1-31</div>
 </body>
 </html>

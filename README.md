@@ -11,12 +11,13 @@ Expand function of file upload element. (input type="file")
 
 ## Examples
 http://amaraimusi.sakura.ne.jp/ImgUploadK_JS/example1.html
+http://amaraimusi.sakura.ne.jp/ImgUploadK_JS/example3.html
 
 ## Info
 
-version 1.0 
+version 1.1
 
 auther Kenji uehara. 
 
-date 2017-1-30
+date 2017-1-30 |b2017-1-31
 
