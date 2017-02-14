@@ -4,8 +4,8 @@
 /**
  * Expand function of file upload element. (input type="file")
  * 
- * @version 1.1.1
- * @date 2017-1-30 | 2017-1-31
+ * @version 1.2
+ * @date 2017-1-30 | 2017-2-14
  */
 var ImgUploadK =function(){
 	
@@ -36,8 +36,9 @@ var ImgUploadK =function(){
 	 * - file_upload_slt :Selector of file upload element.
 	 * - init_display_slt :Selector of initial  display element.(Optional)
 	 * - img_preview_slt :Selector of preview iamge element.
+	 * @param callback(files) :Execute callback when drop image file or change file.Callback argument is file information.
 	 */
-	this.extendDnD = function(param){
+	this.extendDnD = function(param,callback){
 
 		// If Param property is empty, set a value.
 		this.dndParam = _setParamIfEmptyForDnD(param);
@@ -46,6 +47,7 @@ var ImgUploadK =function(){
 		
 		// Keep image file path.
 		this.def_img_fp = $(param.img_preview_slt).attr('src');
+		
 
 		// Add drop event to rapper element.
 		fuElm[0].addEventListener('drop',function(evt){
@@ -61,6 +63,11 @@ var ImgUploadK =function(){
 			
 			// Show image preview.
 			_imgPreviewForDnD(files); 
+			
+			// Excute callback function for drop event.
+			if(callback){
+				callback(files);
+			}
 
 		},false);
 		
@@ -76,9 +83,47 @@ var ImgUploadK =function(){
 			// Get file object and show image preview.
 			var files = e.target.files;
 			_imgPreviewForDnD(files); 
+			
+			// Excute callback function for change event.
+			if(callback){
+				callback(files);
+			}
 
 		});
 		
+	}
+	
+	/**
+	 * Formating callbacks function data.
+	 * @param callbacks :Callback functions.
+	 * @param functionNames :The function name list of callbacks.
+	 * @returns Formated callbacks
+	 */
+	function formatingCallbacks(callbacks,functionNames){
+		
+		var cbFuncs ={};
+		
+		for(var i in functionNames){
+			var func_name = functionNames[i];
+			cbFuncs[func_name] = null;
+		}
+
+
+		if(_empty(callbacks)==false){
+
+			if(typeof callbacks == 'function'){
+				var def_func_name = functionNames[0];
+				cbFuncs[def_func_name] = callbacks;
+			}else{
+				for(var func_name in callbacks){
+					cbFuncs[func_name] = callbacks[func_name];
+				}
+			}
+			
+		}
+		
+		return cbFuncs;
+
 	}
 	
 	
@@ -347,6 +392,22 @@ var ImgUploadK =function(){
 //				};
 			}
 
+		}
+	}
+	
+	
+	
+	// Empty judgment.
+	function _empty(v){
+		if(v == null || v == '' || v=='0'){
+			return true;
+		}else{
+			if(typeof v == 'object'){
+				if(Object.keys(v).length == 0){
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 	

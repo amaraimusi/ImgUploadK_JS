@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="google" content="notranslate" />
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ImgUploadK_JS | Callback</title>
+	
+	<link href="http://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="example/example.css" rel="stylesheet">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<script src="ImgUploadK.js"></script>
+
+	<style>
+		#test1{
+			padding:1px;
+			width:400px;
+			height:250px;
+			background-color:#d6e2f8;
+		}
+		
+		#test1_init{
+			width:300px;
+			margin-top:70px;
+			margin-left:50px;
+		}
+	</style>
+	
+	<script>
+	$(function(){
+		var imgUploadK = new ImgUploadK();
+		imgUploadK.extendDnD({
+			'rap_slt':'#test1',
+			'file_upload_slt':'#file1',
+			'init_display_slt':'#test1_init',
+			'img_preview_slt':'#img1',
+		},function(files){
+			$('#res').append(files[0].name);
+		});
+	});
+	</script>
+
+</head>
+<body>
+<div id="header" ><h1>ImgUploadK_JS | Callback</h1></div>
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+<a href="https://github.com/amaraimusi/ImgUploadK_JS">GitHub</a><br>
+<br>
+
+<h2>example2</h2>
+<div id="test1">
+	<div id="test1_init">
+		Please drag and drop the file.
+		(Multiple files are acceptable)
+		<input type="file" id="file1" />
+	</div>
+	<img id="img1" src="" alt="" />
+</div>
+<div id="res" class="text-success"></div>
+
+
+<hr><br>
+
+
+<h2>Source code</h2>
+JavaScript
+<pre>
+	&lt;script&gt;
+	$(function(){
+		var imgUploadK = new ImgUploadK();
+		imgUploadK.extendDnD({
+			'rap_slt':'#test1',
+			'file_upload_slt':'#file1',
+			'init_display_slt':'#test1_init',
+			'img_preview_slt':'#img1',
+		},function(files){
+			$('#res').append(files[0].name);
+		});
+	});
+	&lt;/script&gt;
+</pre><br>
+
+
+HTML
+<pre>
+	&lt;div id="test1"&gt;
+		&lt;div id="test1_init"&gt;
+			Please drag and drop the file.
+			(Multiple files are acceptable)
+			&lt;input type="file" id="file1" /&gt;
+		&lt;/div&gt;
+		&lt;img id="img1" src="" alt="" /&gt;
+	&lt;/div&gt;
+	&lt;div id="res" class="text-success"&gt;&lt;/div&gt;
+</pre>
+<br>
+
+
+
+
+
+
+
+
+
+
+<div class="yohaku"></div>
+</div><!-- content -->
+<div id="footer">(C) <a href="http://amaraimusi.sakura.ne.jp/" target="blank">kenji uehara</a> 2017-1-30</div>
+</body>
+</html>
