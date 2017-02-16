@@ -41,10 +41,7 @@
 			'init_display_slt':'#test1_init',
 			'img_preview_slt':'#img1',
 		});
-		
-
 	});
-	
 	</script>
 
 </head>
@@ -74,11 +71,40 @@
 	<img id="img1" src="" alt="" />
 </div>
 <div id="res"></div>
+<hr><br><br>
 
 
 
+<h2>Source code</h2>
+JavaScript
+<pre>
+	&lt;script&gt;
+	$(function(){
+		var imgUploadK = new ImgUploadK();
+		imgUploadK.extendDnD({
+			'rap_slt':'#test1',
+			'file_upload_slt':'#file1',
+			'init_display_slt':'#test1_init',
+			'img_preview_slt':'#img1',
+		});
+	});
+	&lt;/script&gt;
+</pre><br>
 
 
+HTML
+<pre>
+&lt;div id="test1"&gt;
+	&lt;div id="test1_init"&gt;
+		Please drag and drop the file.
+		(Multiple files are acceptable)
+		&lt;input type="file" id="file1" /&gt;
+	&lt;/div&gt;
+	&lt;img id="img1" src="" alt="" /&gt;
+&lt;/div&gt;
+&lt;div id="res"&gt;&lt;/div&gt;
+</pre>
+<br>
 
 
 
